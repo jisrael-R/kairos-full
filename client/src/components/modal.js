@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
-export default function Sent() {
+import Col from 'react-bootstrap/esm/Col';
+import { Link } from 'react-router-dom';
+export default function Sent({validation,name}) {
   const values = ['sm-down',];
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
-
+  
   function handleShow(breakpoint) {
     setFullscreen(breakpoint);
     setShow(true);
@@ -15,16 +16,22 @@ export default function Sent() {
   return (
     <>
       {values.map((v, idx) => (
-        <Button key={idx} className="me-2 mb-2" onClick={() => handleShow(v)}>
-          Full screen
-          {typeof v === 'string' && `below ${v.split('-')[0]}`}
+        <Button type='submit' disabled={validation} variant='warning' key={idx} className="me-2 mb-2" onClick={() => handleShow(v)}>
+          {!validation ? 'Submit Form' :'Form Submitted! '}
+          
         </Button>
       ))}
       <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal</Modal.Title>
+          <Modal.Title>{!validation ? 'Oops...something went wrong!':'Sent'}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Modal body content</Modal.Body>
+        <Modal.Body>{!validation ? 'Please, Fill Out All Highlighted Fields.':`Thank you, ${name} Our Team Will be In Contact Soon!` }
+       {validation && <Col>
+       <Link to={'/services'}><Button  variant='warning'>Done</Button></Link> 
+        </Col>}
+        
+        </Modal.Body>
+        
       </Modal>
     </>
   );

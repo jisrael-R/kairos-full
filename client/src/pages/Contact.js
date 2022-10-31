@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -9,20 +10,25 @@ import Sent from '../components/modal';
 import '../index.css'
 import axios from 'axios';
 import {HiOutlineMail} from 'react-icons/hi'
+import { useSelected } from '../useSelected';
+
+
 
 export default class  Contact extends Component{
   
-  
+ 
    
    
-  state={ name:'',
+  state={ 
+    name:'',
     lastname:'',
     email:'',
     message:'',
     phone:'',
     services:'',
     sent:false,
-    validated:false
+    validated:false,
+    
   }
    handleName = (e) =>{
     this.setState({
@@ -58,14 +64,15 @@ export default class  Contact extends Component{
   }
    
   
-    handleSubmit = (event) => {
-       
-      const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+    handleSubmit = async (event) => {
+     event.preventDefault();
+    //   event.stopPropagation();
+    //   const form = event.currentTarget;
+    // if (form.checkValidity() === true) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
       
-    }
+    // }
     this.setState({
       validated:true
       
@@ -81,32 +88,56 @@ export default class  Contact extends Component{
     service:this.state.services
 
   }
-  
-     
  
-   
-   axios.post('/api/form', data)
-  .then(res =>{
-    this.setState({
-        sent:true,
-    },this.resetForm())
-  }).catch(()=>{
-    console.log('message not sent');
+  if(!data.email || !data.lastname || !data.name  || !data.message  || !data.phone  || !data.service){
+    console.log();
+    return this.setState({
+      sent:false
+    })
+  } else{
+   axios.post('/api/form',data).then(function (response) {
+    console.log(response);
+  }).catch((error)=>{
+    console.log(error);
   })
-
+  this.setState({
+      sent:true
+    })
+  }}
   
-   
-  
+  resetForm=()=>{
+    this.setState({
+        name:'',
+        lastname:'',
+         email:'',
+        message:'',
+        phone:'',
+        services:'',
 
+    })
+    setTimeout(()=>{
+      this.setState({
+        sent:false,
+      },3000)
+    })
   }
   
 
+
+
+
+   
+ 
+
   
 render(){
+  const{selected}=useSelected;
+  console.log(selected);
+  
   return (
      <div className="form-container">
 
-    <Form noValidate validated={this.state.validated}   onSubmit={this.handleSubmit} className='p-3 form-list '>
+    <Form noValidate    validated={this.state.validated}   onSubmit={this.handleSubmit} className='p-3 form-list '>
        <div className="service-title">
                 <h1>Contact Form</h1>
                 <div className="underline"></div>
@@ -158,22 +189,23 @@ render(){
         </Form.Group>
       </Row>
       <Row className="mb-3">
-        <Form.Group as={Col} md="3" controlId="validationCustom03">
+        <Form.Group as={Col} md="4" controlId="validationCustom03">
           <Form.Label>Phone</Form.Label>
-          <Form.Control type="text" placeholder="Phone Number" value={this.state.phone}
-            onChange={this.handlePhone} required />
+          <Form.Control type="tel" placeholder="Phone Number" value={this.state.phone}
+            onChange={this.handlePhone} autoComplete={false} required />
           <Form.Control.Feedback type="invalid">
             Please provide a phone number.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="3" controlId="validationCustom04">
+        <Form.Group as={Col} md="4" controlId="validationCustom04">
           <Form.Label>Services</Form.Label>
             <Form.Select aria-label="Default select example" required value={this.state.services}
             onChange={this.handleServices}>
-      <option value={''}>Select a Service</option>
+      <option value={''}>Select a service</option>
       {ServiceList.map(({service,id})=>{
         return<option value={service} key={id} className='capi'>{service}</option>
       })}
+      <option value={'other'}>Other..[specify]</option>
       
     </Form.Select>
           <Form.Control.Feedback type="invalid">
@@ -184,14 +216,20 @@ render(){
       </Row>
       <Form.Group as={Col} md="4" controlId="validationCustom05" className='mb-2'>
           <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" rows={3}placeholder="Comment" required value={this.state.message}
+          <Form.Control as="textarea" rows={3}  placeholder="Comment" required value={this.state.message}
             onChange={this.handleMessage} />
           <Form.Control.Feedback type="invalid">
             Please provide a Comment.
           </Form.Control.Feedback>
         </Form.Group>
+        <div className={this.state.sent ? ' msgAppear':'msg'}>
+                    Message has been sent
+                </div>
+                {/* {this.state.sent && } */}
       
-      <Button type={'submit'}  variant='warning' >Submit form</Button>
+      <Sent validation={this.state.sent} name={`${this.state.name} ${this.state.lastname}`}/>
+      
+     
     </Form>
     </div>
   );

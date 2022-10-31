@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import { useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
-
+import { Link } from 'react-router-dom';
 import ServiceList from '../data';
+import { useSelected } from '../useSelected';
+
 
 const Services = () => {
-    const [list, setList] = useState(ServiceList);
-    console.log(list);
+    const [list] = useState(ServiceList);
+    const {selected,setSelected}=useSelected();
+    
+ 
+    
     return (
         <div className="service-container">
             <div className="service-title">
@@ -29,7 +35,7 @@ const Services = () => {
                             <Card.Body>
                                 <Card.Title>{service.service}</Card.Title>
                                 <Card.Text>{service.description}</Card.Text>
-                                <Button variant="warning">Book Service</Button>
+                                <Button variant="warning" ><Link to={'/contact'}> Book Service</Link></Button>
                             </Card.Body>
                         </Card>
                     );

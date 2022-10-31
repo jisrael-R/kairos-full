@@ -13,7 +13,7 @@ const Footer = () => {
                     <span className="footer-icon">
                         <BsTelephone />
                     </span>
-                    <p> 1-914-463-1623</p>
+                    <p> +1 (914)-463-1623</p>
                 </div>
                 <div className="emil iconf">
                     <span className="footer-icon">

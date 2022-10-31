@@ -2,39 +2,57 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer= require('nodemailer');
 const cors = require('cors');
-const {google} = require('googleapis');
+const path = require('path')
+
+
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded(({extended:true})));
 app.use(cors());
+app.use(express.static(path.join(__dirname +"/public")))
 
-const CLIENT_ID= '460654515572-j0l9p3d98eusv1ond4lcnv4r1ggiduro.apps.googleusercontent.com';
-const CLIENT_SECRET='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';
-const REDIRECT_URI='https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN='1//047BmMbycMZChCgYIARAAGAQSNwF-L9IrM6iYo21mCyIdovkdY3_GT4ZldED-aOOfWStDiZ7QKRdJnJ4lifuE7I0AlqYIrdCJqTM';
 
-const oAuth2Client = new google.auth.OAuth2(CLIENT_ID,CLIENT_SECRET,REDIRECT_URI)
-oAuth2Client.setCredentials({refresh_token:REFRESH_TOKEN})
-// app.get('/',()=>{
-//     resizeBy.send('welcome to my form')
-// })
+// const { MailtrapClient } = require("mailtrap");
 
-app.post('/api/form',async(req,res)=>{
-    const accessToken = await oAuth2Client.getAccessToken()
+// const TOKEN = "52f56eb4949471456876fb809991016d";
+// const ENDPOINT = "https://send.api.mailtrap.io/";
+
+// const client = new MailtrapClient({ endpoint: ENDPOINT, token: TOKEN });
+
+// const sender = {
+//   email: "jorman.iisrael@me.com",
+//   name: "Mailtrap Test",
+// };
+// const recipients = [
+//   {
+//     email: "mailtrap@kairostechservices.com",
+//   }
+// ];
+
+// client
+//   .send({
+//     from:  sender,
+//     to:recipients,
+//     subject: "You are awesome!",
+//     text: "Congrats for sending test email with Mailtrap!",
+//     category: "Integration Test",
+//   })
+//   .then(console.log, console.error);
+app.post('/api/form',(req,res)=>{
+    
     let data = req.body;
     
     let smtpTransport = nodemailer.createTransport({
-       service:'gmail',
-            auth:{
-                type:'OAuth2',
-                user:'unusualrhythms@gmail.com',
-                clientId:CLIENT_ID,
-                clientSecret: CLIENT_SECRET,
-                refreshToken:REFRESH_TOKEN,
-                accessToken: accessToken
+       host:'smtp.mailtrap.io',
+       port:'587',
+       auth:{
+        user:'493d105f2859ae',
+        pass:'66e9f0e12e0fb0'
+    
 
-            }
+       }
+       
     })
 
     
@@ -60,11 +78,17 @@ app.post('/api/form',async(req,res)=>{
                `
     };
     
-
-    smtpTransport.sendMail(mailOptions,(error,response)=>{
+    smtpTransport.verify(function(error, success) {
+  if (error) {
+        console.log(error);
+  } else {
+        console.log('Server is ready to take our messages');
+  }
+});
+    smtpTransport.sendMail(mailOptions,(error,info)=>{
         if(error){
-            response.send(error)
-        }else(response.send(`Success`))
+            return console.log(error);
+        } console.log('Message sent: %s', info.messageId);
     })
     smtpTransport.close();
 })

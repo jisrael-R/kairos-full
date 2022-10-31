@@ -158,6 +158,10 @@ p {
     margin: 20px;
     text-transform: capitalize;
 }
+.info-cards a {
+    text-decoration: none;
+    color: #222;
+}
 .service-container {
     display: flex;
     justify-content: center;
@@ -186,9 +190,14 @@ p {
     padding-left: 1em;
     padding-right: 1em;
 }
+.rows h4 a{
+    color: #222;
+}
 .hero-section-one {
     display: flex;
     flex-direction: column;
+    width: 75%;
+    
 }
 
 .underline {
@@ -209,7 +218,7 @@ p {
     margin-top: 2em;
     margin-bottom: 2em;
     border: 0.2px solid white;
-    height: 60vh;
+    height: 50vh;
 }
 .hero-content {
     position: absolute;
@@ -222,8 +231,8 @@ p {
 }
 .hero-content h1 {
     font-size: 3em;
-    padding: 2em;
     padding-left: 1em;
+    margin-top: 1em;
     padding-bottom: 0;
     font-weight: 300;
     color: var(--clr-grey-9);
@@ -293,7 +302,7 @@ p {
 .footer-info {
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: baseline;
 }
 footer {
     display: flex;
@@ -318,12 +327,48 @@ footer {
     justify-content: center;
 }
 .form-list{
-    width: 70%;
+    width: 78%;
     background-color: #fff;
     margin: 2em;
     border-radius:10px;
 }
+.msg{
+    display: none;
+}
+.msgAppear{
+    display: block;
+}
+.mobile-menu a{
+    text-decoration: none;
+    font-size: 30px;
+    padding-bottom:30px;
+    color: #222;
 
+}
+.logoContainer{
+    margin: 0 auto;
+    padding-bottom:50px;
+    text-align: center;
+}
+.error-page{
+    display: flex;
+    justify-content: center;
+    padding: 2.6em;
+    align-items: center;
+}
+.error-title h2{
+    font-size: 40px;
+}
+.error-title h1{
+    font-size: 7em;
+}
+.error-page .error{
+    margin: 3em;
+}
+.vert-color{
+    color: #222;
+    border: .3px solid #222;
+}
 @media screen and (min-width: 800px) {
     h1 {
         font-size: 4rem;
@@ -357,13 +402,13 @@ footer {
         display: none;
     }
     .hero-content h1 {
-        font-size: 25px;
-        font-weight: 600;
+        font-size: 20px;
+        font-weight: 400;
         padding: 0.9em;
         margin-bottom: 0;
     }
     .hero-content h6 {
-        font-size: 12px;
+        font-size: 13px;
         padding-top: 0;
     }
     .hero-btn {
@@ -373,5 +418,16 @@ footer {
     }
     .about-content {
         flex-flow: wrap;
+    }
+    .vertical{
+        height: 25vh;
+    }
+    .error-page{
+        flex-direction: column;
+        align-items: center;
+        text-align: right;
+    }
+    .vert-color{
+        display: none;
     }
 }

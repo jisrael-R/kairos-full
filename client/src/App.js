@@ -5,7 +5,9 @@ import SingleService from './pages/SingleService';
 import Navbar from './components/Navbar';
 import Contact from './pages/Contact';
 import Footer from './components/footer';
+import Error from './pages/Error';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
     return (
         <Router>
@@ -16,7 +18,7 @@ function App() {
                 <Route path="/services" element={<Services />} />
                 <Route path="/services/:id" element={<SingleService />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={'error'} />
+                <Route path="*" element={<Error/>} />
             </Routes>
             <Footer />
         </Router>
