@@ -10,47 +10,22 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded(({extended:true})));
 app.use(cors());
-app.use(express.static(path.join(__dirname +"/public")))
+// app.use(express.static(path.join(__dirname +"/public")))
 
 
-// const { MailtrapClient } = require("mailtrap");
-
-// const TOKEN = "52f56eb4949471456876fb809991016d";
-// const ENDPOINT = "https://send.api.mailtrap.io/";
-
-// const client = new MailtrapClient({ endpoint: ENDPOINT, token: TOKEN });
-
-// const sender = {
-//   email: "jorman.iisrael@me.com",
-//   name: "Mailtrap Test",
-// };
-// const recipients = [
-//   {
-//     email: "mailtrap@kairostechservices.com",
-//   }
-// ];
-
-// client
-//   .send({
-//     from:  sender,
-//     to:recipients,
-//     subject: "You are awesome!",
-//     text: "Congrats for sending test email with Mailtrap!",
-//     category: "Integration Test",
-//   })
-//   .then(console.log, console.error);
+app.get('/',(req,res)=>{
+    res.send('hello kairo')
+})
 app.post('/api/form',(req,res)=>{
     
     let data = req.body;
     
     let smtpTransport = nodemailer.createTransport({
-       host:'smtp.mailtrap.io',
+       host:'send.smtp.mailtrap.io',
        port:'587',
        auth:{
-        user:'493d105f2859ae',
-        pass:'66e9f0e12e0fb0'
-    
-
+        user:'api',
+        pass:'52f56eb4949471456876fb809991016d'
        }
        
     })
@@ -58,8 +33,8 @@ app.post('/api/form',(req,res)=>{
     
      
     let mailOptions = {
-          from:data.email,
-        to:'unusualrhythms@gmail.com',
+        from:`${data.name} ${data.lastname}<mailtrap@kairostechservices.com>`,
+        to:'Info@kairostechservices.com',
         subject:`[${data.name} ${data.lastname}] - ${data.service}`,
         html:`
              <div class="message">

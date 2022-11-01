@@ -23,10 +23,7 @@ export default function HeroVid() {
                 <div className="hero-section-one">
                     <h1>Multi-Service Company</h1>
                     <h6>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Molestiae dolore sunt neque temporibus, error sapiente
-                        ut dolores eum cum laboriosam eos accusamus sed ad
-                        quisquam harum eveniet. Corrupti, deserunt cum.
+                        Facilitating all installations; LED strips, Access Points, Network routers, Printers, Computers, Musical instruments, Security Cameras and much more.
                     </h6>
                     <Link to={'/services'} className="hero-btn">
                         Our Services
@@ -36,7 +33,7 @@ export default function HeroVid() {
                 <div className="hero-contact">
                     <h1>Got any Questions?</h1>
                     <h6>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                       If you're not sure about a specific service, do not hesitate to reach out. 
                     </h6>
                     <a href="mailto:info@kairostechservices.com" className="hero-btn">
                         Need Help?

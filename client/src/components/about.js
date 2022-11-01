@@ -4,7 +4,7 @@ import HeroData from '../hero-data';
 const About = () => {
     const [data, setData] = useState(HeroData);
     return (
-        <section>
+        <section className='about-page'>
             <div className="service-title">
                 <h1>About us</h1>
                 <div className="underline"></div>

@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
     return (
         <Router>
+            <div className="pageCotain">
             <Navbar />
 
             <Routes>
@@ -21,6 +22,7 @@ function App() {
                 <Route path="*" element={<Error/>} />
             </Routes>
             <Footer />
+            </div>
         </Router>
     );
 }
