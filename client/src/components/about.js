@@ -2,7 +2,7 @@ import { useState } from 'react';
 import HeroData from '../hero-data';
 
 const About = () => {
-    const [data, setData] = useState(HeroData);
+    const [data] = useState(HeroData);
     return (
         <section className='about-page'>
             <div className="service-title">
