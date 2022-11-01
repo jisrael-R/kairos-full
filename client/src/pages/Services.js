@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import { useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import ServiceList from '../data';
-import { useSelected } from '../useSelected';
+
 
 
 const Services = () => {
     const [list] = useState(ServiceList);
-    const {selected,setSelected}=useSelected();
+   
     
  
     
