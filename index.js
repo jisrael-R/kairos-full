@@ -14,7 +14,7 @@ app.use(cors());
 
 
 app.get('/',(req,res)=>{
-    res.send('hello kairo')
+    res.send('hello,Kairos-App')
 })
 app.post('/api/form',(req,res)=>{
     
@@ -34,7 +34,7 @@ app.post('/api/form',(req,res)=>{
      
     let mailOptions = {
         from:`${data.name} ${data.lastname}<mailtrap@kairostechservices.com>`,
-        to:'Info@kairostechservices.com',
+        to:'jorman.iisrael@me.com',
         subject:`[${data.name} ${data.lastname}] - ${data.service}`,
         html:`
              <div class="message">
