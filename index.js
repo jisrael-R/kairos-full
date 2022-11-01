@@ -10,12 +10,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded(({extended:true})));
 app.use(cors());
-// app.use(express.static(path.join(__dirname +"/public")))
+app.use(express.static(path.join(__dirname +"/client/build")));
+app.get('*',(req,res)=>{
+    res.sendFile(path.join(__dirname +"/client/build","index.html"));
+})
 
-
-app.get('/',(req,res)=>{
+app.get('/send',(req,res)=>{
     res.send('hello,Kairos-App')
 })
+
 app.post('/api/form',(req,res)=>{
     
     let data = req.body;
