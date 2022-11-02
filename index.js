@@ -18,8 +18,8 @@ app.get('*',(req,res)=>{
 app.get('/send',(req,res)=>{
     res.send('hello,Kairos-App')
 })
-app.get("http://kairostechservices.com/.well-known/acme-challenge/8an2sktr8rE5iFk2Y5EOrk2_xCY1cwL3b_KQDcsSOW8",(req,res)=>{
-    res.send('8an2sktr8rE5iFk2Y5EOrk2_xCY1cwL3b_KQDcsSOW8.ifzS3BGCFgjXtTS_-Glx2ZMaMjIIpoK59AziiJlY-gk')
+app.get("http://www.kairostechservices.com/.well-known/acme-challenge/Ha2jq-nZlg7LaY-arI27523XNquXl5DNizHHoSFIjP4",(req,res)=>{
+    res.send('Ha2jq-nZlg7LaY-arI27523XNquXl5DNizHHoSFIjP4.ifzS3BGCFgjXtTS_-Glx2ZMaMjIIpoK59AziiJlY-gk')
 })
 app.post('/api/form',(req,res)=>{
     
