@@ -37,7 +37,7 @@ app.post('/api/form',(req,res)=>{
      
     let mailOptions = {
         from:`${data.name} ${data.lastname}<mailtrap@kairostechservices.com>`,
-        to:'jorman.iisrael@me.com',
+        to:'Info@kairostechservices.com',
         subject:`[${data.name} ${data.lastname}] - ${data.service}`,
         html:`
              <div class="message">
