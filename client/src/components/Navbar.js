@@ -47,7 +47,7 @@ const Navbars = () => {
                                 <Link to={'/services'}>Services</Link>
                             </Nav>
                             <Nav>
-                                <Link to={'/contact'}>Contact</Link>
+                                <a target={'_blank'} rel='noreferrer' href={'https://docs.google.com/forms/d/e/1FAIpQLSd92bRVwaze-7VTv722oAPmJOyPWOcFT--chaQ40QOE4mK13w/viewform?usp=sf_link'}>Contact</a>
                             </Nav>
                         </Nav>
                     </Row>

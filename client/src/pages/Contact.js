@@ -10,8 +10,13 @@ import axios from 'axios';
 import {HiOutlineMail} from 'react-icons/hi'
 import { useSelected } from '../useSelected';
 
-
-
+import Forms from './ContactTow';
+//  const Contact = () =>{
+//      return <div className="about-section form-container">
+//         <Forms/>
+//       </div>
+// }
+// export default Contact;
 export default class  Contact extends Component{
   
  
@@ -24,6 +29,7 @@ export default class  Contact extends Component{
     message:'',
     phone:'',
     services:'',
+    add:false,
     sent:false,
     validated:false,
     
@@ -140,7 +146,7 @@ render(){
                 <h1>Contact Form</h1>
                 <div className="underline"></div>
             </div>
-      <Row className="mb-3">
+      <Row className="mb-3 d-flex justify-content-center">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label>First name</Form.Label>
           <Form.Control
@@ -166,6 +172,17 @@ render(){
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
+        
+      </Row>
+      <Row className="mb-3 d-flex justify-content-center">
+        <Form.Group as={Col} md="4" controlId="validationCustom03">
+          <Form.Label>Phone</Form.Label>
+          <Form.Control type="tel" placeholder="Phone Number" value={this.state.phone}
+            onChange={this.handlePhone} autoComplete={false} required />
+          <Form.Control.Feedback type="invalid">
+            Please provide a phone number.
+          </Form.Control.Feedback>
+        </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationCustomUsername">
           <Form.Label>Email</Form.Label>
           <InputGroup hasValidation>
@@ -185,34 +202,9 @@ render(){
             </Form.Control.Feedback>
           </InputGroup>
         </Form.Group>
-      </Row>
-      <Row className="mb-3">
-        <Form.Group as={Col} md="4" controlId="validationCustom03">
-          <Form.Label>Phone</Form.Label>
-          <Form.Control type="tel" placeholder="Phone Number" value={this.state.phone}
-            onChange={this.handlePhone} autoComplete={false} required />
-          <Form.Control.Feedback type="invalid">
-            Please provide a phone number.
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationCustom04">
-          <Form.Label>Services</Form.Label>
-            <Form.Select aria-label="Default select example" required value={this.state.services}
-            onChange={this.handleServices}>
-      <option value={''}>Select a service</option>
-      {ServiceList.map(({service,id})=>{
-        return<option value={service} key={id} className='capi'>{service}</option>
-      })}
-      <option value={'other'}>Other..[specify]</option>
-      
-    </Form.Select>
-          <Form.Control.Feedback type="invalid">
-            Please select an option.
-          </Form.Control.Feedback>
-        </Form.Group>
-        
-      </Row>
-      <Form.Group as={Col} md="4" controlId="validationCustom05" className='mb-2'>
+        </Row>
+        <Row className='d-flex justify-content-center'>
+<Form.Group as={Col} md="4" controlId="validationCustom05" className='mb-2'>
           <Form.Label>Message</Form.Label>
           <Form.Control as="textarea" rows={3}  placeholder="Comment" required value={this.state.message}
             onChange={this.handleMessage} />
@@ -220,12 +212,34 @@ render(){
             Please provide a Comment.
           </Form.Control.Feedback>
         </Form.Group>
+        <Form.Group as={Col} md="4" controlId="validationCustom04">
+          <Form.Label>Services</Form.Label>
+          <div className={this.state.add ?'list-element add-more':'list-element'}>
+        {ServiceList.map((services)=>{
+          return <Form.Check 
+            type={'checkbox'}
+            id={services.id}
+            label={services.service}
+            required
+          />
+       
+        })}
+      
+        </div>
+          <button className='seeMore' type='button'  onClick={()=>!this.state.add ? this.setState({
+            add:true
+          }) : this.setState({add:false})}>{!this.state.add ? `see more`:'see less'}</button>
+        <Form.Control.Feedback type="invalid">
+            Please select an option.
+          </Form.Control.Feedback>
+        </Form.Group>
+        </Row>
         <div className={this.state.sent ? ' msgAppear':'msg'}>
                     Message has been sent
                 </div>
                 {/* {this.state.sent && } */}
       
-      <Sent validation={this.state.sent} name={`${this.state.name} ${this.state.lastname}`}/>
+      <Sent  validation={this.state.sent} name={`${this.state.name} ${this.state.lastname}`}/>
       
      
     </Form>

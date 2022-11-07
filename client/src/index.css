@@ -402,6 +402,30 @@ footer {
         line-height: 1;
     }
 }
+.list-element{
+    border: 1px solid lightgray;
+    padding: 1em;
+    padding-top: .4em;
+    border-radius: 5px;
+    width: 100%;
+    height: 25%;
+    overflow: hidden;
+}
+.add-more{
+    height: 50%;
+    transition: var(--transition);
+}
+.seeMore{
+    background-color: transparent;
+    color: #222;
+    border: none;
+    margin-bottom: 8em;
+    transition: var(--transition);
+}
+.seeMore:hover{
+    color: var(--clr-grey-5);
+    text-decoration: underline;
+}
 @media screen and (max-width: 800px) {
     .menu-icon {
         display: block;

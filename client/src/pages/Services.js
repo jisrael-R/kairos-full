@@ -8,6 +8,7 @@ import ServiceList from '../data';
 
 const Services = () => {
     const [list] = useState(ServiceList);
+  
    
     
  
@@ -34,7 +35,7 @@ const Services = () => {
                             <Card.Body>
                                 <Card.Title>{service.service}</Card.Title>
                                 <Card.Text>{service.description}</Card.Text>
-                                <Button variant="warning" ><Link to={'/contact'}> Book Service</Link></Button>
+                                <Button variant="warning" ><a target={'_blank'} rel='noreferrer' href={'https://docs.google.com/forms/d/e/1FAIpQLSd92bRVwaze-7VTv722oAPmJOyPWOcFT--chaQ40QOE4mK13w/viewform?usp=sf_link'}>Book Service</a></Button>
                             </Card.Body>
                         </Card>
                     );

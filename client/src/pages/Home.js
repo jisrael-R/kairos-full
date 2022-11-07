@@ -1,5 +1,6 @@
 import HeroVid from '../components/HeroVid';
 import About from '../components/about';
+
 const Home = () => {
     return (
         <>
@@ -10,6 +11,7 @@ const Home = () => {
                 <div className="about-section">
                     <About />
                 </div>
+                 
             </section>
         </>
     );
