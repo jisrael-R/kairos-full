@@ -10,7 +10,7 @@ import axios from 'axios';
 import {HiOutlineMail} from 'react-icons/hi'
 import { useSelected } from '../useSelected';
 
-import Forms from './ContactTow';
+
 //  const Contact = () =>{
 //      return <div className="about-section form-container">
 //         <Forms/>
