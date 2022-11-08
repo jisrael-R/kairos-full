@@ -53,7 +53,7 @@ function OffcanvasExample() {
                                 <Nav className="justify-content-end flex-grow-1 pe-3">
                                     <Nav onClick={()=> setExpanded(false)}> <Link to={'/'}>Home</Link></Nav>
                                     <Nav onClick={()=> setExpanded(false)}> <Link to={'/services'}>Services</Link></Nav>
-                                    <Nav onClick={()=> setExpanded(false)}> <Link to={'/contact'}>Contact</Link></Nav>
+                                    <Nav onClick={()=> setExpanded(false)}> <a target={'_blank'} rel='noreferrer' href={'https://docs.google.com/forms/d/e/1FAIpQLSd92bRVwaze-7VTv722oAPmJOyPWOcFT--chaQ40QOE4mK13w/viewform?usp=sf_link'}>Contact</a></Nav>
                                  
                                 </Nav>
                                 
