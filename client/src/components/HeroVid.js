@@ -52,7 +52,7 @@ export default function HeroVid() {
                 muted
                 alt="hero"
                 src={
-                    'https://res.cloudinary.com/dkokliolj/video/upload/v1665773932/kairos/techy1_cbwjck.mp4'
+                    'https://res.cloudinary.com/dkokliolj/video/upload/e_reverse/v1665773932/kairos/techy1_cbwjck.mp4'
                 }
                 ref={videoEl}
             />
