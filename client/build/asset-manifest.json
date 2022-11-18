@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.ee51691f.css",
-    "main.js": "/static/js/main.cc2e1468.js",
+    "main.js": "/static/js/main.696c46ff.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
     "static/media/490-KairosLogo FINAL.png": "/static/media/490-KairosLogo FINAL.6183ce64d17373ace56c.png",
     "index.html": "/index.html",
     "main.ee51691f.css.map": "/static/css/main.ee51691f.css.map",
-    "main.cc2e1468.js.map": "/static/js/main.cc2e1468.js.map",
+    "main.696c46ff.js.map": "/static/js/main.696c46ff.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ee51691f.css",
-    "static/js/main.cc2e1468.js"
+    "static/js/main.696c46ff.js"
   ]
 }
